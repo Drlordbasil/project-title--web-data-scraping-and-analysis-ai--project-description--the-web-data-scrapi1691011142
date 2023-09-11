@@ -11,7 +11,7 @@ class DataScraper:
     def scrape_data(self):
         try:
             response = requests.get(self.url)
-            response.raise_for_status()  # Raise an exception for status codes other than 200
+            response.raise_for_status()
 
             soup = BeautifulSoup(response.content, 'html.parser')
             data = []
@@ -67,15 +67,12 @@ def main():
     url = 'https://www.example.com/population'
 
     try:
-        # Create an instance of DataScraper and scrape data
         scraper = DataScraper(url)
         data = scraper.scrape_data()
 
-        # Create an instance of DataAnalyzer and analyze data
         analyzer = DataAnalyzer(data)
         df = analyzer.analyze_data()
 
-        # Create an instance of DataPlotter and plot data
         plotter = DataPlotter(df)
         plotter.plot_data()
 
